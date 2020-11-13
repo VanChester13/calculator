@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title> Калькулятор </title>
+    </head>
+    <body>
+        <div id="calc-wrap">
+            <div id="calc">
+                <textarea id=inputVal>0</textarea>   
+                 <script>
+                    window.addEventListener('load', function OnWindowLoaded() {
+                        var signs = [
+                            '1', '2', '3', '+', 
+                            '4', '5', '6', '-',
+                            '7', '8', '9', '/',
+                            '0', '=', '.', 'c',
+                            ' ', '*', '√', ' ' 
+                            ];
+                     
+                       
+                        var calc = document.getElementById('calc');
+                      
+                        var textArea = document.getElementById('inputVal');
+                       signs.forEach(function (sign) {
+                            var signElement = document.createElement('div');
+                            signElement.className = 'btn';
+                            signElement.innerHTML = sign;
+                            calc.appendChild(signElement);
+                        });
+                             
+                             document.querySelectorAll('#calc-wrap .btn').forEach(function (button) {
+                            button.addEventListener('click', onButtonClick);
+                        });
+                      
+                      
+                        function onButtonClick(e) {
+                            if (e.target.innerHTML === 'c') {
+                                textArea.innerHTML = '0';
+                            } else if (e.target.innerHTML === '='){               
+                                textArea.innerHTML = eval(textArea.innerHTML);
+                               } else if (e.target.innerHTML === '√'){               
+                                textArea.innerHTML =  Math.sqrt(textArea.innerHTML);
+                            } else if (textArea.innerHTML === '0') {
+                                textArea.innerHTML = e.target.innerHTML;
+                            } else {
+                                textArea.innerHTML += e.target.innerHTML;
+                            }
+                        }
+                    });
+                    </script>
+        </div>
+        </div>
+    </body>
+</html>
+
+</body>
+</html>
+
+
+
